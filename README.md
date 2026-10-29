@@ -1,5 +1,6 @@
-# Your Project's Title...
-Your project's description...
+# Rohit Jain: AEM portfolio
+My portfolio of AEM demos and customer work, built on AEM Edge Delivery Services. Content is authored in
+Google Docs and Sheets; pages describe themselves with metadata, and lists build from the query index.
 
 ## Environments
 - Preview: https://main--portfolio--futkarj.aem.page/
