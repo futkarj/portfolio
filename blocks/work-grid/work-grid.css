@@ -73,7 +73,7 @@
   padding: 20px;
 }
 
-.work-grid .work-card-body h3 {
+.work-grid .work-card-body h2 {
   margin: 0;
   font-size: var(--heading-font-size-xs);
   line-height: 1.3;

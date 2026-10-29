@@ -386,3 +386,15 @@ main .section.highlight {
   margin: 0;
   padding: 40px 0;
 }
+
+/* links inside running text are underlined, so they don't rely on color alone */
+main li a:any-link,
+footer p a:any-link {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+main p a:any-link:not(.button) {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}

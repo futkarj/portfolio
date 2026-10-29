@@ -34,7 +34,7 @@ function buildCard(item) {
     badges.append(badge);
   });
 
-  const title = document.createElement('h3');
+  const title = document.createElement('h2');
   title.textContent = item.title;
 
   body.append(badges, title);
