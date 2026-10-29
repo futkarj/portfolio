@@ -1,0 +1,116 @@
+{
+ "total": 9,
+ "offset": 0,
+ "limit": 9,
+ "data": [
+  {
+   "path": "/drafts/work/cloud-ready",
+   "title": "Cloud-Ready AEM Without a Cloud Sandbox",
+   "description": "Most AEMaaCS deals start on 6.5. I show how to assess and modernize a 6.x codebase for Cloud Service entirely locally, and how to tell that story to a buyer worried about migration cost.",
+   "image": "",
+   "type": "Demo",
+   "skills": "Migration & modernization, Architecture & advisory, Presales & demos",
+   "tools": "AEM Cloud SDK, AEM Project Archetype, Dispatcher SDK, Maven, Adobe AEM agent skills",
+   "status": "In progress",
+   "date": "2026-10-28",
+   "lastModified": "1793300000"
+  },
+  {
+   "path": "/drafts/work/eds-doc-to-site",
+   "title": "EDS Demo: From Google Doc to a 100-Lighthouse Site",
+   "description": "I built a live Edge Delivery Services page where a rate table comes straight from a spreadsheet marketing edits. It scores 100 on Lighthouse performance on mobile. Try it below, then read how I'd demo it to a buyer.",
+   "image": "",
+   "type": "Demo",
+   "skills": "Edge Delivery Services, Presales & demos",
+   "tools": "da.live, aem.live, Lighthouse",
+   "status": "Live",
+   "date": "2026-10-28",
+   "lastModified": "1793300000"
+  },
+  {
+   "path": "/drafts/work/headless-graphql",
+   "title": "Planned: headless content with GraphQL",
+   "description": "Planned demo. Content Fragments delivered through GraphQL, answering \"we need content in apps, not just the web\".",
+   "image": "",
+   "type": "Planned",
+   "skills": "Headless & APIs",
+   "tools": "",
+   "status": "Planned",
+   "date": "2026-10-01",
+   "lastModified": "1793300000"
+  },
+  {
+   "path": "/drafts/work/universal-editor-eds",
+   "title": "Planned: Universal Editor on Edge Delivery Services",
+   "description": "Planned demo. Visual, in-context editing for marketers on an Edge Delivery Services site, answering \"marketers want visual editing\".",
+   "image": "",
+   "type": "Planned",
+   "skills": "Edge Delivery Services, Presales & demos",
+   "tools": "",
+   "status": "Planned",
+   "date": "2026-10-01",
+   "lastModified": "1793300000"
+  },
+  {
+   "path": "/drafts/work/coca-cola-cloud",
+   "title": "Coca-Cola: Adobe cloud services adoption across 200+ global sites",
+   "description": "I guided Coca-Cola's adoption of Adobe Cloud Services across 200+ global sites.",
+   "image": "",
+   "type": "Customer win",
+   "skills": "Migration & modernization, Architecture & advisory",
+   "tools": "",
+   "status": "",
+   "date": "2026-10-01",
+   "lastModified": "1793300000"
+  },
+  {
+   "path": "/drafts/work/manufacturer-roadmap",
+   "title": "High-tech manufacturer: from CTO criticism to a board-level roadmap",
+   "description": "When a high-tech manufacturer's CTO openly criticized implementation progress, I consolidated the findings into a board-level roadmap and turned the relationship into one of trust.",
+   "image": "",
+   "type": "Customer win",
+   "skills": "Architecture & advisory",
+   "tools": "",
+   "status": "",
+   "date": "2026-10-01",
+   "lastModified": "1793300000"
+  },
+  {
+   "path": "/drafts/work/microsoft-arr",
+   "title": "Microsoft: protecting multi-million ARR across two Azure release cycles",
+   "description": "At Microsoft, I protected multi-million ARR across two Azure release cycles of Adobe software.",
+   "image": "",
+   "type": "Customer win",
+   "skills": "Architecture & advisory",
+   "tools": "",
+   "status": "",
+   "date": "2026-10-01",
+   "lastModified": "1793300000"
+  },
+  {
+   "path": "/drafts/work/regional-bank",
+   "title": "Regional bank: catching a missing requirement before go-live",
+   "description": "In a design assessment for a regional bank, I found a missing multi-tenancy requirement and put a blueprint in front of the sponsor before go-live.",
+   "image": "",
+   "type": "Customer win",
+   "skills": "Architecture & advisory",
+   "tools": "",
+   "status": "",
+   "date": "2026-10-01",
+   "lastModified": "1793300000"
+  },
+  {
+   "path": "/drafts/work/travel-brand",
+   "title": "Travel brand: from proof of concept to a seven-figure engagement",
+   "description": "For a top-3 global travel and hospitality brand, I turned a proof of concept into a seven-figure consulting engagement and a migration of their .com marketing properties to AEM.",
+   "image": "",
+   "type": "Customer win",
+   "skills": "Presales & demos, Migration & modernization",
+   "tools": "",
+   "status": "",
+   "date": "2026-10-01",
+   "lastModified": "1793300000"
+  }
+ ],
+ ":type": "sheet"
+}

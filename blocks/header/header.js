@@ -1,4 +1,5 @@
 import { getMetadata } from '../../scripts/aem.js';
+import { loadSkills, skillUrl } from '../../scripts/portfolio.js';
 import { loadFragment } from '../fragment/fragment.js';
 
 // media query match that indicates mobile/tablet width
@@ -87,6 +88,48 @@ function toggleMenu(nav, navSections, forceExpanded = null) {
 }
 
 /**
+ * Adds a Skills group, one link per row of the skills sheet, after the first nav link (Home).
+ * New rows in the sheet show up in the sidebar without editing the nav doc.
+ * @param {Element} navSections The nav sections container
+ */
+async function addSkillsGroup(navSections) {
+  const list = navSections?.querySelector('.default-content-wrapper > ul');
+  const skills = await loadSkills();
+  if (!list || !skills.length) return;
+
+  const group = document.createElement('li');
+  group.className = 'nav-group';
+  const label = document.createElement('p');
+  label.className = 'nav-group-label';
+  label.id = 'nav-skills-label';
+  label.textContent = 'Skills';
+  const links = document.createElement('ul');
+  links.setAttribute('aria-labelledby', label.id);
+  skills.forEach(({ skill, slug }) => {
+    const li = document.createElement('li');
+    const a = document.createElement('a');
+    a.href = skillUrl(slug);
+    a.textContent = skill;
+    li.append(a);
+    links.append(li);
+  });
+  group.append(label, links);
+
+  const first = list.querySelector(':scope > li');
+  if (first) first.after(group);
+  else list.prepend(group);
+}
+
+/** Marks the link to the current page, for styling and screen readers. */
+function markCurrent(nav) {
+  nav.querySelectorAll('a[href]').forEach((a) => {
+    if (new URL(a.href, window.location).pathname === window.location.pathname) {
+      a.setAttribute('aria-current', 'page');
+    }
+  });
+}
+
+/**
  * loads and decorates the header, mainly the nav
  * @param {Element} block The header block element
  */
@@ -95,6 +138,7 @@ export default async function decorate(block) {
   const navMeta = getMetadata('nav');
   const navPath = navMeta ? new URL(navMeta, window.location).pathname : '/nav';
   const fragment = await loadFragment(navPath);
+  if (!fragment) return;
 
   // decorate nav DOM
   block.textContent = '';
@@ -109,17 +153,19 @@ export default async function decorate(block) {
   });
 
   const navBrand = nav.querySelector('.nav-brand');
-  const brandLink = navBrand.querySelector('.button');
+  const brandLink = navBrand?.querySelector('.button');
   if (brandLink) {
     brandLink.className = '';
-    brandLink.closest('.button-container').className = '';
+    brandLink.closest('.button-wrapper, .button-container').className = '';
   }
 
   const navSections = nav.querySelector('.nav-sections');
+  await addSkillsGroup(navSections);
+  markCurrent(nav);
   if (navSections) {
     navSections.querySelectorAll(':scope .default-content-wrapper > ul > li').forEach((navSection) => {
       const subList = navSection.querySelector(':scope > ul');
-      if (!subList) return;
+      if (!subList || navSection.classList.contains('nav-group')) return;
       navSection.classList.add('nav-drop');
       // wrap the dropdown label in a button so it is announced as expandable
       const button = document.createElement('button');

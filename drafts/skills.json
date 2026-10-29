@@ -1,0 +1,38 @@
+{
+ "total": 5,
+ "offset": 0,
+ "limit": 5,
+ ":type": "sheet",
+ "data": [
+  {
+   "skill": "Edge Delivery Services",
+   "slug": "edge-delivery-services",
+   "description": "Fast sites authored in documents and spreadsheets, published on aem.live, with the performance story I use with buyers.",
+   "order": "1"
+  },
+  {
+   "skill": "Migration & modernization",
+   "slug": "migration-and-modernization",
+   "description": "Moving brands onto AEM, and from AEM 6.x to AEM as a Cloud Service: assessments, roadmaps and hands-on tooling.",
+   "order": "2"
+  },
+  {
+   "skill": "Presales & demos",
+   "slug": "presales-and-demos",
+   "description": "Discovery, solution design, demos and proofs of concept built around the buyer's own problem.",
+   "order": "3"
+  },
+  {
+   "skill": "Architecture & advisory",
+   "slug": "architecture-and-advisory",
+   "description": "Architecture, upgrade and cloud-adoption decisions with the CIOs and CTOs of enterprise AEM customers.",
+   "order": "4"
+  },
+  {
+   "skill": "Headless & APIs",
+   "slug": "headless-and-apis",
+   "description": "Content Fragments and GraphQL for apps and channels beyond the website.",
+   "order": "5"
+  }
+ ]
+}

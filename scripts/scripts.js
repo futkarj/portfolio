@@ -10,6 +10,8 @@ import {
   loadSections,
   loadCSS,
   buildBlock,
+  getMetadata,
+  toClassName,
 } from './aem.js';
 
 if (window.trustedTypes && window.trustedTypes.createPolicy) {
@@ -74,11 +76,60 @@ function buildWidgetAutoBlocks(main) {
 }
 
 /**
+ * Turns a Metadata table into <meta> tags. The publishing pipeline does this for real pages;
+ * local drafts (aem up --html-folder) keep the table in the body, so this fills the gap there.
+ * @param {Element} main The main element
+ */
+function liftDraftMetadata(main) {
+  const table = main.querySelector(':scope div.metadata');
+  if (!table) return;
+  [...table.children].forEach((row) => {
+    const [key, value] = [...row.children].map((cell) => cell.textContent.trim());
+    if (!key) return;
+    const meta = document.createElement('meta');
+    meta.name = toClassName(key);
+    meta.content = value;
+    document.head.append(meta);
+  });
+  table.remove();
+}
+
+/**
+ * Work pages (any page with a Type) get a header built from their metadata.
+ * @param {Element} main The container element
+ */
+function buildWorkHeader(main) {
+  if (!getMetadata('type')) return;
+  const h1 = main.querySelector('h1');
+  if (!h1) return;
+  h1.after(buildBlock('work-header', ''));
+}
+
+/**
+ * The skill template: one page serves every /skills/<slug> URL. It gets a skill header
+ * (name and description from the skills sheet) and a work grid filtered to that skill.
+ * @param {Element} main The container element
+ */
+function buildSkillTemplate(main) {
+  if (getMetadata('template') !== 'skill') return;
+  const slug = getMetadata('skill') || window.location.pathname.split('/').filter(Boolean).pop();
+  const section = main.querySelector(':scope > div') || main.appendChild(document.createElement('div'));
+  section.prepend(buildBlock('skill-header', [[slug]]));
+  section.append(buildBlock('work-grid', [['Skill', slug]]));
+}
+
+/**
  * Builds all synthetic blocks in a container element.
  * @param {Element} main The container element
  */
 function buildAutoBlocks(main) {
   try {
+    // page-level auto-blocks only for the page itself, not for nav/footer fragments,
+    // which go through decorateMain too and see the same page metadata
+    if (main === document.querySelector('body > main')) {
+      buildWorkHeader(main);
+      buildSkillTemplate(main);
+    }
     // auto load `*/fragments/*` references
     const fragments = [...main.querySelectorAll('a[href*="/fragments/"]')].filter((f) => !f.closest('.fragment'));
     if (fragments.length > 0) {
@@ -161,8 +212,9 @@ export function decorateMain(main) {
  */
 async function loadEager(doc) {
   document.documentElement.lang = 'en';
-  decorateTemplateAndTheme();
   const main = doc.querySelector('main');
+  if (main) liftDraftMetadata(main);
+  decorateTemplateAndTheme();
   if (main) {
     decorateMain(main);
     document.body.classList.add('appear');

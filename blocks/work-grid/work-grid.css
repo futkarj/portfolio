@@ -1,0 +1,127 @@
+.work-grid .work-grid-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.work-grid .work-grid-filters button {
+  margin: 0;
+  padding: 6px 14px;
+  border: 1px solid var(--border-color);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--text-color);
+  font: inherit;
+  font-size: var(--body-font-size-xs);
+  cursor: pointer;
+}
+
+.work-grid .work-grid-filters button:hover {
+  border-color: var(--text-color);
+}
+
+.work-grid .work-grid-filters button[aria-pressed='true'] {
+  background: var(--text-color);
+  border-color: var(--text-color);
+  color: var(--background-color);
+}
+
+.work-grid .work-grid-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.work-grid .work-card[hidden] {
+  display: none;
+}
+
+.work-grid .work-card > a {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--surface-color);
+  color: var(--text-color);
+  text-decoration: none;
+  transition: border-color 0.15s, transform 0.15s;
+}
+
+.work-grid .work-card > a:hover,
+.work-grid .work-card > a:focus-visible {
+  border-color: var(--text-color);
+  transform: translateY(-2px);
+}
+
+.work-grid .work-card picture img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+.work-grid .work-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 20px;
+}
+
+.work-grid .work-card-body h3 {
+  margin: 0;
+  font-size: var(--heading-font-size-xs);
+  line-height: 1.3;
+}
+
+.work-grid .work-card-badges,
+.work-grid .work-card-description {
+  margin: 0;
+}
+
+.work-grid .work-card-description {
+  color: var(--muted-color);
+  font-size: var(--body-font-size-xs);
+  line-height: 1.5;
+}
+
+.work-grid .work-card-skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: auto 0 0;
+  padding: 8px 0 0;
+  list-style: none;
+  font-size: 12px;
+  color: var(--muted-color);
+}
+
+.work-grid .work-card-skills li::after {
+  content: '·';
+  margin-left: 6px;
+}
+
+.work-grid .work-card-skills li:last-child::after {
+  content: '';
+}
+
+.work-grid .work-grid-empty {
+  color: var(--muted-color);
+}
+
+@media (width >= 600px) {
+  .work-grid .work-grid-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (width >= 1200px) {
+  .work-grid .work-grid-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

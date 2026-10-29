@@ -1,0 +1,5 @@
+.skill-header p {
+  max-width: 60ch;
+  margin: 0 0 32px;
+  color: var(--muted-color);
+}
