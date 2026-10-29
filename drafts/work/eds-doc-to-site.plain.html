@@ -1,0 +1,64 @@
+<div>
+  <h1>EDS Demo: From Google Doc to a 100-Lighthouse Site</h1>
+  <blockquote><p><strong>TL;DR:</strong> I built a live Edge Delivery Services page where a rate table comes straight from a spreadsheet marketing edits. It scores 100 on Lighthouse performance on mobile. Try it below, then read how I'd demo it to a buyer.</p></blockquote>
+  <p><em>Why this demo:</em> after the EDS Adobe Learning and AEM Rockstar Masterclass (NYC, 2026), I wanted a demo that shows how EDS fits the content-velocity and performance problems I saw in eight years of AEM field engineering.</p>
+  <h2>The buyer problem</h2>
+  <ul>
+  <li>"Publishing a page change takes a ticket and three days."</li>
+  <li>"Our Core Web Vitals hurt SEO and conversion."</li>
+  <li>"Every AEM project needs a big dev team."</li>
+  </ul>
+  <h2>What EDS changes (the 30-second pitch)</h2>
+  <p>Content is authored in familiar tools (Google Docs/Sheets, SharePoint, or Document Authoring). Code is plain JS/CSS in GitHub. aem.live publishes to a CDN-first architecture built for a perfect Lighthouse score.</p>
+  <h2>Try the live demo</h2>
+  <p>This is the real page, embedded from aem.live. The rates come from a spreadsheet, and the featured row is set by the author.</p>
+  <p><strong>Open it full page:</strong> https://main--aem-eds-demo--futkarj.aem.live/savings</p>
+  <p><strong>The spreadsheet behind it, as JSON:</strong> https://main--aem-eds-demo--futkarj.aem.live/rates.json</p>
+  <p><strong>Code:</strong> https://github.com/futkarj/aem-eds-demo</p>
+  <h2>What I built</h2>
+  <ul>
+  <li>✅ A site from Adobe's <code>aem-boilerplate</code> template, synced from GitHub with the AEM Code Sync app</li>
+  <li>✅ Content authored in Document Authoring (da.live)</li>
+  <li>✅ A custom <strong>Rate Table</strong> block (<code>blocks/rate-table</code>). Authors drop it on a page and link a spreadsheet. The sheet's columns become the table, one row can be highlighted, and on phones it turns into stacked cards. If the sheet can't load, it shows a polite fallback message instead of a broken page.</li>
+  <li>✅ A <code>rates</code> sheet published as <code>/rates.json</code>, and a <code>savings</code> page that uses the block</li>
+  <li>🚧 Next: a branded header and home page, and product cards</li>
+  </ul>
+  <h2>Results</h2>
+  <p>Lighthouse on the live page, October 28, 2026:</p>
+  <p>SEO scored 69 only because aem.live tells search engines not to index branch URLs (<code>x-robots-tag: noindex</code>). That's intentional, and a production domain removes it.</p>
+  <h2>Demo flow (7 minutes)</h2>
+  <ol>
+  <li><strong>Hook (1 min):</strong> run PageSpeed Insights live and show a score of 100.</li>
+  <li><strong>Author (2 min):</strong> change an APY in the <code>rates</code> sheet in da.live, click Preview, then Publish. The page updates in seconds, with no developer and no deploy.</li>
+  <li><strong>Structured content (2 min):</strong> open <code>/rates.json</code> to show the same sheet served as an API that other channels can use too.</li>
+  <li><strong>Developer view (2 min):</strong> the block is just <code>blocks/rate-table/rate-table.js</code> + <code>.css</code>. Push to GitHub, and the change is live on the branch URL.</li>
+  </ol>
+  <h2>Discovery questions this demo answers</h2>
+  <ul>
+  <li>How many people are involved in publishing a change today?</li>
+  <li>What's your current LCP / mobile Lighthouse score?</li>
+  <li>Where does marketing write content <em>before</em> it goes into the CMS?</li>
+  </ul>
+  <h2>Objections &amp; answers</h2>
+  <ul>
+  <li><em>"Docs aren't a real CMS."</em> → Show the Sidekick, preview/publish, and Universal Editor as the WYSIWYG option.</li>
+  <li><em>"What about our existing AEM Sites?"</em> → EDS can run alongside AEM Sites; migrate page by page.</li>
+  </ul>
+  <h2>What's next</h2>
+  <p>Universal Editor authoring, plus an experimentation (A/B) block.</p>
+  <div class="metadata">
+    <div><div>Title</div><div>EDS Demo: From Google Doc to a 100-Lighthouse Site</div></div>
+    <div><div>Description</div><div>I built a live Edge Delivery Services page where a rate table comes straight from a spreadsheet marketing edits. It scores 100 on Lighthouse performance on mobile. Try it below, then read how I'd demo it to a buyer.</div></div>
+    <div><div>Type</div><div>Demo</div></div>
+    <div><div>Status</div><div>Live</div></div>
+    <div><div>Skills</div><div>Edge Delivery Services, Presales &amp; demos</div></div>
+    <div><div>Tools</div><div>da.live, aem.live, Lighthouse</div></div>
+    <div><div>Live Demo</div><div>https://main--aem-eds-demo--futkarj.aem.live/savings</div></div>
+    <div><div>Repo</div><div>https://github.com/futkarj/aem-eds-demo</div></div>
+    <div><div>Date</div><div>2026-10-28</div></div>
+    <div><div>Nav</div><div>/drafts/nav</div></div>
+    <div><div>Footer</div><div>/drafts/footer</div></div>
+    <div><div>Skills Sheet</div><div>/drafts/skills.json</div></div>
+    <div><div>Query Index</div><div>/drafts/query-index.json</div></div>
+  </div>
+</div>

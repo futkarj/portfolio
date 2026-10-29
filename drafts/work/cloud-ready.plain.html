@@ -1,13 +1,52 @@
 <div>
   <h1>Cloud-Ready AEM Without a Cloud Sandbox</h1>
-  <blockquote><p><strong>TL;DR:</strong> Most AEMaaCS deals start on 6.5. I show how to assess and modernize a 6.x codebase for Cloud Service entirely locally.</p></blockquote>
+  <blockquote><p><strong>TL;DR:</strong> Most AEMaaCS deals start on 6.5. I show how to assess and modernize a 6.x codebase for Cloud Service entirely locally, and how to tell that story to a buyer worried about migration cost.</p></blockquote>
+  <p><em>Why this demo:</em> I've run this conversation for real. At Adobe I advised 100+ enterprise AEM customers on upgrades and cloud adoption, and at Capgemini I shaped the Cloud Service migration roadmap for a financial services client. This demo turns that advisory motion into something a buyer can watch.</p>
   <h2>The buyer problem</h2>
-  <ul><li>"We're on 6.5 and dread the next upgrade."</li><li>"We don't know how much of our code will break on Cloud Service."</li></ul>
+  <ul>
+  <li>"We're on 6.5 and dread the next upgrade."</li>
+  <li>"We don't know how much of our code will break on Cloud Service."</li>
+  <li>"What does 'evergreen' actually mean for our team?"</li>
+  </ul>
+  <h2>What I'm building (all local, in progress)</h2>
+  <p><em>Status (Oct 2026):</em> the Cloud target runs on the local AEMaaCS SDK, and its Dispatcher config passes all three validator checks. The AEM 6.5 LTS baseline (15 deliberate legacy patterns) is assessed from its code. Modernizing the flagged patterns is next.</p>
+  <ol>
+  <li><strong>Baseline:</strong> a sample AEM 6.5 LTS project with some deliberately "legacy" patterns (static templates, custom replication agent, <code>/apps</code> content, a non-immutable config).</li>
+  <li><strong>Assess:</strong> from the code alone, with no running 6.5 LTS instance: Adobe's open-source <strong>AEM agent skills</strong> (migration runbook, code assessment), the <strong>Cloud Manager build analysers</strong>, and the <strong>Dispatcher Converter</strong>. On a real engagement, the <strong>Best Practices Analyzer</strong> on the customer's instance adds the repository-level findings. Everything comes from my sample project, not customer data.</li>
+  <li><strong>Modernize:</strong> regenerate the project with the <strong>AEM Project Archetype</strong> targeting Cloud, then refactor the patterns the assessment flagged (and the <strong>AEM Modernize Tools</strong> for static → editable templates).</li>
+  <li><strong>Validate:</strong> build with the Cloud Manager build analysers, deploy to the AEMaaCS SDK quickstart, and run the Dispatcher validator, all locally.</li>
+  </ol>
+  <p><strong>Code:</strong> https://github.com/futkarj/aem-cloud-readiness-demo</p>
   <h2>What I found so far</h2>
-  <p>The tools caught 7 of my 15 planted patterns. The Cloud Manager build analysers pass on the legacy code.</p>
+  <ul>
+  <li><strong>The tools caught 7 of my 15 planted patterns.</strong> They are strong on Java blockers (replication, asset uploads, JCR listeners) and weak on repository-level ones (content in <code>/apps</code>, configs, Classic UI dialogs). That gap is why BPA still matters on a real instance.</li>
+  <li><strong>The Cloud Manager build analysers pass on the legacy code.</strong> A green build is not the same as cloud-ready: admin logins and replication agents compile fine and fail at runtime.</li>
+  <li><strong>The Dispatcher Converter silently dropped the site's 19 publish filter rules.</strong> A verification step caught it before anything shipped. Automated conversion saves time, but the output needs expert review.</li>
+  </ul>
+  <p>Full write-up: https://github.com/futkarj/aem-cloud-readiness-demo/blob/main/docs/assessment/README.md</p>
+  <h2>Demo flow (8 minutes)</h2>
+  <ol>
+  <li><strong>Hook (1 min):</strong> "Here's what your next upgrade looks like on 6.x vs. on Cloud Service: zero."</li>
+  <li><strong>Readiness report (3 min):</strong> walk through the findings by category, show what local tools catch and what needs BPA, and turn them into an effort estimate.</li>
+  <li><strong>Before/after code (2 min):</strong> show the diff side by side, e.g. a static template turned into an editable one, or OSGi config moved to run-mode folders.</li>
+  <li><strong>Pipeline story (2 min):</strong> show that the build analysers pass on the legacy code, then explain what Cloud Manager's quality gates do and don't catch. A diagram is fine here, since there's no sandbox.</li>
+  </ol>
+  <h2>Discovery questions</h2>
+  <ul>
+  <li>When was your last AEM upgrade, and what did it cost in time?</li>
+  <li>How many custom OSGi services / replication customizations do you have?</li>
+  <li>Who owns Dispatcher config today?</li>
+  </ul>
+  <h2>Objections &amp; answers</h2>
+  <ul>
+  <li><em>"Migration is too risky."</em> → Scope the work with a code assessment now and BPA on their instance, and show the Cloud Acceleration Manager as the guided path.</li>
+  <li><em>"We lose control on Cloud."</em> → Explain what stays yours (code, Dispatcher config, pipelines) vs. what Adobe runs.</li>
+  </ul>
+  <h2>What's next</h2>
+  <p>Modernize the flagged patterns one by one, with before/after diffs. Then a headless GraphQL demo on the same content.</p>
   <div class="metadata">
     <div><div>Title</div><div>Cloud-Ready AEM Without a Cloud Sandbox</div></div>
-    <div><div>Description</div><div>Assess and modernize a 6.x codebase for Cloud Service entirely locally.</div></div>
+    <div><div>Description</div><div>Most AEMaaCS deals start on 6.5. I show how to assess and modernize a 6.x codebase for Cloud Service entirely locally, and how to tell that story to a buyer worried about migration cost.</div></div>
     <div><div>Type</div><div>Demo</div></div>
     <div><div>Status</div><div>In progress</div></div>
     <div><div>Skills</div><div>Migration &amp; modernization, Architecture &amp; advisory, Presales &amp; demos</div></div>
