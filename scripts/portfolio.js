@@ -9,7 +9,9 @@ const sheets = {};
  */
 export function fetchSheet(path) {
   if (!sheets[path]) {
-    sheets[path] = fetch(path)
+    // aem.live lets browsers reuse JSON for 2 hours; 'no-cache' revalidates each time (a cheap 304
+    // when nothing changed), so a newly published page shows up in the lists right away
+    sheets[path] = fetch(path, { cache: 'no-cache' })
       .then((resp) => (resp.ok ? resp.json() : { data: [] }))
       .then((json) => json.data || [])
       .catch(() => []);
