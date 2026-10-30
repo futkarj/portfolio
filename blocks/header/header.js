@@ -123,8 +123,12 @@ async function addSkillsGroup(navSections) {
 /** Marks the link to the current page, for styling and screen readers. */
 function markCurrent(nav) {
   nav.querySelectorAll('a[href]').forEach((a) => {
-    if (new URL(a.href, window.location).pathname === window.location.pathname) {
-      a.setAttribute('aria-current', 'page');
+    try {
+      if (new URL(a.href, window.location).pathname === window.location.pathname) {
+        a.setAttribute('aria-current', 'page');
+      }
+    } catch {
+      // an unreadable link in the nav doc must not take the whole sidebar down
     }
   });
 }
