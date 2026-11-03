@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
   <meta
@@ -7,7 +7,7 @@
     content="script-src 'nonce-aem' 'strict-dynamic' 'unsafe-inline' http: https:; base-uri 'self'; object-src 'none';"
     move-to-http-header="true"
   >
-  <title>Page not found</title>
+  <title>Page not found | Rohit Jain</title>
   <script nonce="aem" type="text/javascript">
     window.isErrorPage = true;
     window.errorCode = '404';
@@ -43,12 +43,26 @@
       align-items: center;
     }
 
-    main.error .error-number {
-      width: 100%;
+    main.error .error-code {
+      margin: 0;
+      color: var(--muted-color);
+      font-size: var(--body-font-size-s);
+      font-weight: 600;
+      letter-spacing: 0.06em;
     }
 
-    main.error .error-number text {
-      font-family: monospace;
+    main.error .error-message {
+      margin-top: 8px;
+    }
+
+    main.error .button-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    main.error .button-container .button {
+      margin: 0;
     }
   </style>
   <link rel="stylesheet" href="/styles/lazy-styles.css">
@@ -58,12 +72,12 @@
   <header></header>
   <main class="error">
     <div class="section">
-      <svg viewBox="1 0 38 18" class="error-number">
-        <text x="0" y="17">404</text>
-      </svg>
-      <h2 class="error-message">Page Not Found</h2>
+      <p class="error-code">404</p>
+      <h1 class="error-message">This page doesn't exist</h1>
+      <p>It may have moved, or the link may be mistyped. The demos and customer work are all on the home page, and by
+        skill in the menu.</p>
       <p class="button-container">
-        <a href="/" class="button secondary error-button-home">Go home</a>
+        <a href="/" class="button primary error-button-home">See all work</a>
       </p>
     </div>
   </main>
