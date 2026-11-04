@@ -4,7 +4,7 @@ Google Docs and Sheets; pages describe themselves with metadata, and lists build
 
 ## Environments
 - Preview: https://main--portfolio--futkarj.aem.page/
-- Live: https://main--portfolio--futkarj.aem.live/
+- Live: https://namerohit.com (served through a Cloudflare Worker; origin https://main--portfolio--futkarj.aem.live/)
 
 ## Documentation
 
